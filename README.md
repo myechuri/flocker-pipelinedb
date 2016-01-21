@@ -12,16 +12,16 @@ Start PipelineDB server on the first Agent Node.
 
 From Client Node:
 
-git clone https://github.com/myechuri/flocker-pipelinedb.git
-docker-compose -f docker-compose-node1.yml up
+* git clone https://github.com/myechuri/flocker-pipelinedb.git
+* docker-compose -f docker-compose-node1.yml up
 
 Step 3
 ------
 
 Log into client node, then, setup env for running client workload for PipelineDB:
 
-sudo apt-get install python-pip
-sudo pip install TwitterAPI
-sudo pip install --upgrade requests
-sudo apt-get build-dep python-psycopg2
-sudo pip install psycopg2
+* sudo apt-get install python-pip
+* sudo pip install TwitterAPI
+* sudo pip install --upgrade requests
+* sudo apt-get build-dep python-psycopg2
+* sudo pip install psycopg2
