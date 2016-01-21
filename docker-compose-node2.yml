@@ -1,0 +1,9 @@
+pipelinedb:
+  image: pipelinedb/pipelinedb
+  ports:
+     -  "5432:5432"
+  environment:
+     - "constraint:flocker-node==2"
+  volume_driver: flocker
+  volumes:
+     - 'pipelinedb:/mnt/pipelinedb/data'
