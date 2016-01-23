@@ -15,7 +15,7 @@ Step 2 - Prepare Client Node
 
 * Set ``DOCKER_HOST`` to point to Swarm Manager (``export DOCKER_HOST=tcp://54.86.117.247:2376``).
 
-* git clone https://github.com/myechuri/flocker-pipelinedb.git
+* ``git clone https://github.com/myechuri/flocker-pipelinedb.git``
 
 Step 3 - Start PipelineDB server on Agent Node 1
 ------------------------------------------------
@@ -29,10 +29,10 @@ Step 4 - Generate streaming workload using TwitterAPI
 
 * Log into client node, then, setup environment for running client workload for PipelineDB:
 
-.. prompt:: bash $
+  .. prompt:: bash $
 
-   sudo apt-get install python-pip
-   sudo pip install TwitterAPI
-   sudo pip install --upgrade requests
-   sudo apt-get build-dep python-psycopg2
-   sudo pip install psycopg2
+     sudo apt-get install python-pip
+     sudo pip install TwitterAPI
+     sudo pip install --upgrade requests
+     sudo apt-get build-dep python-psycopg2
+     sudo pip install psycopg2
