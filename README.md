@@ -8,8 +8,8 @@ Step 1 - Provision Cluster
 * Restart Docker on Agent Node 1 with a tag ``flocker-node==1``, and Agent Node 2 with tag ``flocker-node==2`` (by adding ``--label flocker-node=${node_number}`` to DOCKER_OPTS variable in ``/etc/default/docker``).
 This enables docker-compose to request Swarm scheduling preference in Step 2.
 
-Step 2 - Prepare Client Node
-----------------------------
+Step 2 - Prepare Client
+-----------------------
 
 * Install docker-compose.
 
@@ -24,15 +24,15 @@ Step 3 - Start PipelineDB server on Agent Node 1
 
 * Start PipelineDB server on the first Agent Node: ``docker-compose -f docker-compose-node1.yml up``. This starts up PipelineDB server on Agent Node 1.
 
-Step 4 - Generate streaming workload using TwitterAPI
------------------------------------------------------
+Step 4 - Generate streaming workload
+------------------------------------
 
 * Log into client node, then, setup environment for running client workload for PipelineDB:
 
-  .. prompt:: bash $
+    .. prompt:: bash $
 
-     sudo apt-get install python-pip
-     sudo pip install TwitterAPI
-     sudo pip install --upgrade requests
-     sudo apt-get build-dep python-psycopg2
-     sudo pip install psycopg2
+       sudo apt-get install python-pip
+       sudo pip install TwitterAPI
+       sudo pip install --upgrade requests
+       sudo apt-get build-dep python-psycopg2
+       sudo pip install psycopg2
