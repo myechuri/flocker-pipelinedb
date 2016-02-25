@@ -5,7 +5,7 @@
 Step 1 - Provision Cluster
 --------------------------
 
-* _Install 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes.
+* Install_ 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes.
 
 
 * Restart Docker on Agent Node 1 with a tag ``flocker-node==1``, and Agent Node 2 with tag ``flocker-node==2`` (by adding ``--label flocker-node=${node_number}`` to DOCKER_OPTS variable in ``/etc/default/docker``).
