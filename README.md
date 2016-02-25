@@ -1,11 +1,11 @@
 # flocker-pipelinedb
 
-[![Alt Flocker PipelineDB demo](http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg)](https://youtu.be/dYztp_c2eiQ)
+[![Alt Flocker PipelineDB demo](http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg)](http://www.youtube.com/watch?v=dYztp_c2eiQ "Flocker PipelineDB demo")
 
 Step 1 - Provision Cluster
 --------------------------
 
-* `Install`_ 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes.
+* [Install](https://docs.clusterhq.com/en/latest/docker-integration/cloudformation.html) 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes.
 
 
 * Restart Docker on Agent Node 1 with a tag ``flocker-node==1``, and Agent Node 2 with tag ``flocker-node==2`` (by adding ``--label flocker-node=${node_number}`` to DOCKER_OPTS variable in ``/etc/default/docker``).
@@ -39,4 +39,3 @@ Step 4 - Generate streaming workload
        sudo apt-get build-dep python-psycopg2
        sudo pip install psycopg2
 
-.. _Install: https://docs.clusterhq.com/en/latest/docker-integration/cloudformation.html
