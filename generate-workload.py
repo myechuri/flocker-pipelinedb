@@ -6,29 +6,33 @@ import psycopg2
 from psycopg2.extras import Json
 import os
 
-CONSUMER_KEY = ''
-CONSUMER_SECRET = ''
-ACCESS_TOKEN_KEY = ''
-ACCESS_TOKEN_SECRET = ''
 CONNECT_TEMPLATE = u"dbname=twitter user=pipeline password=pipeline host={host} port=5432"
 
-# Get PipelineDB server IP from environment
+# Get PipelineDB server IP and OAuth keys from environment
 host = os.environ.get('PIPELINE_SERVER_HOST_IP')
+consumer_key = os.environ.get('CONSUMER_KEY')
+consumer_secret = os.environ.get('CONSUMER_SECRET')
+access_token_key = os.environ.get('ACCESS_TOKEN_KEY')
+access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
 
-api = TwitterAPI(CONSUMER_KEY,
-                 CONSUMER_SECRET,
-                 ACCESS_TOKEN_KEY,
-                 ACCESS_TOKEN_SECRET)
+api = TwitterAPI(consumer_key,
+                 consumer_secret,
+                 access_token_key,
+                 access_token_secret)
 
 # stream all tweets identified as being in San Francisco
 r = api.request('statuses/filter', {'locations': '-122.75,36.8,-121.75,37.8'} )
 
-
-conn = psycopg2.connect(CONNECT_TEMPLATE.format(host))
+conn = psycopg2.connect(CONNECT_TEMPLATE.format(host=host))
 conn.autocommit = True
 cur = conn.cursor()
+
+# Enable continuous queries
+cur.execute("""ACTIVATE""")
 
 for item in r:
     # check if this is a tweet by looking for message text
     if 'text' in item:
+        print "ITEM"
+        print item 
         cur.execute("""INSERT INTO tweets ( content ) VALUES ( %s )""",(Json(item),))
