@@ -5,7 +5,8 @@
 Step 1 - Provision Cluster
 --------------------------
 
-* Install 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes. (Control Node hosts Flocker Control Agent and Docker Swarm Manager, and Agent Node hosts Flocker Node Agent and Docker Swarm Agent). 
+* _Install 3 node Flocker-Swarm cluster with 1 Control Node and 2 Agent Nodes.
+
 
 * Restart Docker on Agent Node 1 with a tag ``flocker-node==1``, and Agent Node 2 with tag ``flocker-node==2`` (by adding ``--label flocker-node=${node_number}`` to DOCKER_OPTS variable in ``/etc/default/docker``).
 This enables docker-compose to request Swarm scheduling preference in Step 2.
@@ -31,10 +32,11 @@ Step 4 - Generate streaming workload
 
 * Log into client node, then, setup environment for running client workload for PipelineDB:
 
-.. code-block:: bash
 
        sudo apt-get install python-pip
        sudo pip install TwitterAPI
        sudo pip install --upgrade requests
        sudo apt-get build-dep python-psycopg2
        sudo pip install psycopg2
+
+.. _Install: https://docs.clusterhq.com/en/latest/docker-integration/cloudformation.html
