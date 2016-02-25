@@ -1,5 +1,8 @@
 # flocker-pipelinedb
 
+Demo video
+----------
+
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=dYztp_c2eiQ" target="_blank"><img src="http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg" alt="Flocker PipelineDB demo" width="240" height="180" border="10" /></a>
 
 Step 1 - Provision Cluster
