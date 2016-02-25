@@ -31,7 +31,7 @@ Step 4 - Generate streaming workload
 
 * Log into client node, then, setup environment for running client workload for PipelineDB:
 
-    .. prompt:: bash $
+.. code-block:: bash
 
        sudo apt-get install python-pip
        sudo pip install TwitterAPI
