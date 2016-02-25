@@ -1,6 +1,6 @@
 # flocker-pipelinedb
 
-[![Alt Flocker PipelineDB demo](http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg)](http://www.youtube.com/watch?v=dYztp_c2eiQ "Flocker PipelineDB demo")
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=dYztp_c2eiQ" target="_blank"><img src="http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg" alt="Flocker PipelineDB demo" width="240" height="180" border="10" /></a>
 
 Step 1 - Provision Cluster
 --------------------------
@@ -22,11 +22,10 @@ Step 3 - Start PipelineDB server on Agent Node 1
 
 * ``cd flocker-pipelinedb``
 
-* Start PipelineDB server on the first Agent Node:
+* Start PipelineDB server on Agent Node 1:
 <pre><code>
 docker-compose -f docker-compose-node1.yml up
 </code></pre>
-This starts up PipelineDB server on Agent Node 1.
 
 * Connect to PipelineDB server on Agent Node 1, create database ``twitter`` with static stream ``tweets``, and a continuous view ``tagstream`` that pulls hashtags from tweets within past one hour.
 
@@ -68,7 +67,7 @@ Step 4 - Generate streaming workload
        sudo pip install psycopg2
 </code></pre>
 
-* Set PIPELINE_SERVER_HOST_IP environment variable to public IP of Agent Node 1.
+* Set ``PIPELINE_SERVER_HOST_IP`` environment variable to public IP of Agent Node 1.
 
 * Set Twitter OAuth information to run workload. Please set ``CONSUMER_KEY``, ``CONSUMER_SECRET``, ``ACCESS_TOKEN_KEY``, ``ACCESS_TOKEN_SECRET`` environment variables (reference: [TwitterAPI documentation](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)).
 
@@ -104,14 +103,15 @@ docker-compose -f docker-compose-node2.yml up
 Step 7 - Verify state persisted across relocation
 -------------------------------------------------
 
-* Connect to PipelineDB server on Agent Node 2, then select from tagstream - you should see the same output as in Step 5.
+* Connect to PipelineDB server on Agent Node 2, then select from ``tagstream`` - you should see the same output as in Step 5.
 <pre><code>
 twitter=# select * from tagstream limit 5;
 </code></pre>
+
 Motivation
 ----------
 
-This demo is based on PipelineDB workload workflow suggested in [this blogpost](http://www.databasesoup.com/2015/07/pipelinedb-streaming-postgres.html).
+This demo is based on PipelineDB workflow suggested in [this blogpost](http://www.databasesoup.com/2015/07/pipelinedb-streaming-postgres.html).
 
 Acknowledgements
 ----------------
