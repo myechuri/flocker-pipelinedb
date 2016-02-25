@@ -1,6 +1,6 @@
 # flocker-pipelinedb
 
-[![Flocker PipelineDB demo](http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg)](https://youtu.be/dYztp_c2eiQ)
+[![Alt Flocker PipelineDB demo](http://img.youtube.com/vi/dYztp_c2eiQ/0.jpg)](https://youtu.be/dYztp_c2eiQ)
 
 Step 1 - Provision Cluster
 --------------------------
