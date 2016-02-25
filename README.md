@@ -29,12 +29,13 @@ Step 4 - Generate streaming workload
 
 * Setup environment for running client workload for PipelineDB:
 
-
+<pre><code>
        sudo apt-get install python-pip
        sudo pip install TwitterAPI
        sudo pip install --upgrade requests
        sudo apt-get build-dep python-psycopg2
        sudo pip install psycopg2
+</code></pre>
 
 * Set PIPELINE_SERVER_HOST_IP environment variable to public IP of Agent Node 1.
 
@@ -42,7 +43,9 @@ Step 4 - Generate streaming workload
 
 * Start workload generator.
 
+<pre><code>
        python generate-workload.py
+</code></pre>
 
 
 Motivation
