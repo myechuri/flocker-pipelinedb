@@ -51,12 +51,13 @@ CREATE STREAM
 twitter=# CREATE CONTINUOUS VIEW tagstream as SELECT json_array_elements(content #> ARRAY['entities','hashtags']) ->> 'text' AS tag FROM tweets WHERE arrival_timestamp > ( clock_timestamp() - interval '1 hour' );
 
 CREATE CONTINUOUS VIEW
-```sql
+```
 
 ### Step 4 - Generate streaming workload
 
 * Set Twitter OAuth information in the `twitter-workload.yml`.
 twitter tokens/keys (reference: [TwitterAPI documentation](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)).
+
 
 ```yaml
 environment:
