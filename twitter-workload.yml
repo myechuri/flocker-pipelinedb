@@ -1,0 +1,8 @@
+twitterstream:
+  image: stephenitis/python-twitterstream:latest
+  environment:
+    CONSUMER_KEY: ''
+    CONSUMER_SECRET: ''
+    ACCESS_TOKEN_KEY: ''
+    ACCESS_TOKEN_SECRET: ''
+    PIPELINE_SERVER_HOST_IP: 192.168.99.100

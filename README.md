@@ -27,35 +27,27 @@ Step 3 - Start PipelineDB server on Agent Node 1
 
 * Start PipelineDB server on Agent Node 1:
 <pre><code>
-docker-compose -f docker-compose-node1.yml up
+docker-compose -f pipelinedb-node1.yml up
 </code></pre>
 
 * Connect to PipelineDB server on Agent Node 1, create database ``twitter`` with static stream ``tweets``, and a continuous view ``tagstream`` that pulls hashtags from tweets within past one hour.
 
 <pre><code>
-ubuntu@ip-172-31-7-164:~$ psql -h 54.173.243.221  -p 5432 -U pipeline 
-Password for user pipeline: 
-psql (9.3.10, server 9.4.4)
-WARNING: psql major version 9.3, server major version 9.4.
-         Some psql features might not work.
-Type "help" for help.
+ubuntu@ip-172-31-7-164:~$ psql -h 54.173.243.221  -p 5432 -U pipeline
+Password for user pipeline:
+
+
 pipeline=# create database twitter;
 CREATE DATABASE
+
 pipeline=# \c twitter
-psql (9.3.10, server 9.4.4)
-WARNING: psql major version 9.3, server major version 9.4.
-         Some psql features might not work.
 You are now connected to database "twitter" as user "pipeline".
 twitter=# create stream tweets ( content json );
 CREATE STREAM
-twitter=# CREATE CONTINUOUS VIEW tagstream as
-twitter-# SELECT json_array_elements(content #>
-twitter(# ARRAY['entities','hashtags']) ->> 'text' AS tag
-twitter-# FROM tweets
-twitter-# WHERE arrival_timestamp > 
-twitter-# ( clock_timestamp() - interval '1 hour' );
+
+twitter=# CREATE CONTINUOUS VIEW tagstream as SELECT json_array_elements(content #> ARRAY['entities','hashtags']) ->> 'text' AS tag FROM tweets WHERE arrival_timestamp > ( clock_timestamp() - interval '1 hour' );
+
 CREATE CONTINUOUS VIEW
-twitter=# 
 </code></pre>
 
 Step 4 - Generate streaming workload
@@ -85,22 +77,23 @@ Step 5 - Verify workload reached PipelineDB
 -------------------------------------------
 
 * Connect to PipelineDB server on Agent Node 1, and verify workload reached the server.
-<pre><code>
+
+```sql
 twitter=# select * from tagstream limit 5;
-</code></pre>
+```sql
 
 Step 6 - Relocated PipelineDB to Agent Node 2
 ---------------------------------------------
 
 * Stop PipelineDB server on Agent Node 1
 <pre><code>
-docker-compose -f docker-compose-node1.yml stop
-docker-compose -f docker-compose-node1.yml rm -f
+docker-compose -f pipelinedb-node1.yml stop
+docker-compose -f pipelinedb-node1.yml rm -f
 </code></pre>
 
 * Move PipelineDB server to Agent Node 2 by Docker Composing up with a manifest constraining it to Agent Node 2.
 <pre><code>
-docker-compose -f docker-compose-node2.yml up
+docker-compose -f pipelinedb-node2.yml up
 </code></pre>
 
 Step 7 - Verify state persisted across relocation

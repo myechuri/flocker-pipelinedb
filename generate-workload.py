@@ -5,6 +5,16 @@ from TwitterAPI import TwitterAPI
 import psycopg2
 from psycopg2.extras import Json
 import os
+import requests.packages.urllib3
+import sys
+requests.packages.urllib3.disable_warnings()
+
+print sys.version
+print os.environ.get('PIPELINE_SERVER_HOST_IP')
+print os.environ.get('CONSUMER_KEY')
+print os.environ.get('CONSUMER_SECRET')
+print os.environ.get('ACCESS_TOKEN_KEY')
+print os.environ.get('ACCESS_TOKEN_SECRET')
 
 CONNECT_TEMPLATE = u"dbname=twitter user=pipeline password=pipeline host={host} port=5432"
 
@@ -22,7 +32,7 @@ api = TwitterAPI(consumer_key,
 
 # stream all tweets identified as being in San Francisco
 r = api.request('statuses/filter', {'locations': '-122.75,36.8,-121.75,37.8'} )
-
+print r
 conn = psycopg2.connect(CONNECT_TEMPLATE.format(host=host))
 conn.autocommit = True
 cur = conn.cursor()
@@ -34,5 +44,5 @@ for item in r:
     # check if this is a tweet by looking for message text
     if 'text' in item:
         print "ITEM"
-        print item 
+        print item
         cur.execute("""INSERT INTO tweets ( content ) VALUES ( %s )""",(Json(item),))
