@@ -9,13 +9,6 @@ import requests.packages.urllib3
 import sys
 requests.packages.urllib3.disable_warnings()
 
-print sys.version
-print os.environ.get('PIPELINE_SERVER_HOST_IP')
-print os.environ.get('CONSUMER_KEY')
-print os.environ.get('CONSUMER_SECRET')
-print os.environ.get('ACCESS_TOKEN_KEY')
-print os.environ.get('ACCESS_TOKEN_SECRET')
-
 CONNECT_TEMPLATE = u"dbname=twitter user=pipeline password=pipeline host={host} port=5432"
 
 # Get PipelineDB server IP and OAuth keys from environment
