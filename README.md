@@ -118,4 +118,4 @@ This demo is made possible by:
 
 * Josh Berkus, Derek Nelson, Usman Masood from [PipelineDB](https://www.pipelinedb.com).
 
-* [ClusterHQ](https://clusterhq.com) engineering.
+* [ClusterHQ](https://clusterhq.com) Engineering and Marketing.
